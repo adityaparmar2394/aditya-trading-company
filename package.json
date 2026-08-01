@@ -1,0 +1,15 @@
+{
+  "name": "aditya-trading-company",
+  "version": "1.0.0",
+  "description": "Aditya Trading Company - grain mandi trading management system",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {},
+  "license": "UNLICENSED"
+}
