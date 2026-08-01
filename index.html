@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Trading Company</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g900:#0a1f12;--g800:#1a3a2a;--g700:#2d6a4f;--g600:#40916c;--g400:#74c69d;--g100:#f0faf4;
+  --gold:#d4a017;--gold-l:#f0c040;--gold-bg:#fffbf0;
+  --red:#e63946;--blue:#2563eb;--purple:#7c3aed;
+  --gray50:#f9fafb;--gray100:#f3f4f6;--gray200:#e5e7eb;--gray400:#9ca3af;--gray600:#4b5563;--gray800:#1f2937;
+  --cream:#faf8f4;--white:#fff;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 16px rgba(0,0,0,.1);--shadow-lg:0 12px 40px rgba(0,0,0,.15);
+  --radius:12px;--radius-sm:8px;--radius-lg:20px;
+  --transition:.2s cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f7f5}
+.page{display:none;animation:fadeIn .3s ease}@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.page.active{display:block}
+button{cursor:pointer;font-family:Arial,sans-serif}
+input,select,textarea{font-family:Arial,sans-serif}
+.topnav{background:#1a3a2a;padding:14px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100}
+.logo{color:#f0c040;font-size:20px;font-weight:bold}
+.logo span{color:#fff;font-size:12px;display:block;font-weight:normal;opacity:0.6}
+.nav-links a{color:rgba(255,255,255,0.75);text-decoration:none;margin-left:24px;font-size:14px}
+.nav-links a:hover{color:#f0c040}
+.nav-btns{display:flex;gap:10px}
+.btn{padding:9px 20px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:all 0.2s}
+.btn-gold{background:#d4a017;color:#1a3a2a}
+.btn-gold:hover{background:#f0c040}
+.btn-outline{background:transparent;color:white;border:1.5px solid rgba(255,255,255,0.4)}
+.btn-outline:hover{background:rgba(255,255,255,0.1)}
+.btn-green{background:#2d6a4f;color:white}
+.btn-green:hover{background:#40916c}
+.btn-red{background:#e63946;color:white}
+.btn-sm{padding:6px 14px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.hero{background:linear-gradient(135deg,#1a3a2a,#0f2318);padding:80px 48px;text-align:center}
+.hero h1{color:white;font-size:48px;margin-bottom:12px}
+.hero h1 span{color:#f0c040}
+.hero p{color:rgba(255,255,255,0.65);font-size:18px;margin-bottom:8px}
+.hero-hindi{color:rgba(255,255,255,0.4);font-size:16px;margin-bottom:36px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-stats{display:flex;justify-content:center;gap:64px;margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
+.stat-val{font-size:40px;color:#f0c040;font-weight:bold}
+.stat-label{color:rgba(255,255,255,0.5);font-size:13px;margin-top:4px}
+.section{padding:64px 48px;max-width:1200px;margin:0 auto}
+.section-title{font-size:32px;font-weight:bold;margin-bottom:8px;color:#1a3a2a}
+.section-title span{color:#2d6a4f}
+.section-sub{color:#666;margin-bottom:40px;font-size:15px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:white;border-radius:12px;padding:24px;border:1px solid #e5e5e5;transition:all 0.2s}
+.card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);transform:translateY(-2px)}
+.card-icon{font-size:32px;margin-bottom:12px}
+.card-title{font-size:16px;font-weight:700;color:#1a3a2a;margin-bottom:8px}
+.card-desc{color:#666;font-size:14px;line-height:1.6}
+footer{background:#1a3a2a;color:white;padding:48px;text-align:center}
+footer p{color:rgba(255,255,255,0.4);font-size:13px;margin-top:12px}
+.login-wrap{min-height:100vh;background:#f0ebe0;display:flex;align-items:center;justify-content:center;padding:20px}
+.login-box{background:white;border-radius:16px;padding:40px;width:100%;max-width:420px;box-shadow:0 8px 40px rgba(0,0,0,0.1)}
+.login-logo{text-align:center;margin-bottom:32px}
+.login-logo .icon{font-size:48px}
+.login-logo h2{font-size:22px;color:#1a3a2a;margin-top:8px}
+.login-logo p{color:#888;font-size:13px}
+.form-group{margin-bottom:16px}
+.form-label{font-size:13px;font-weight:600;color:#555;margin-bottom:6px;display:block}
+.form-input{width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;background:#fff;transition:all 0.2s}
+.form-input:focus{border-color:#2d6a4f;outline:none;box-shadow:0 0 0 3px rgba(45,106,79,0.1)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+textarea.form-input{min-height:90px;resize:vertical}
+.field-error{color:#e63946;font-size:12px;margin-top:4px;display:none}
+.login-submit{width:100%;padding:14px;background:#2d6a4f;color:white;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s;margin-top:8px}
+.login-submit:hover{background:#40916c}
+.login-error{color:#e63946;font-size:13px;background:#fff0f0;padding:10px 14px;border-radius:8px;margin-bottom:12px;border:1px solid #fcc;display:none}
+.back-link{text-align:center;margin-top:20px}
+.back-link a{color:#2d6a4f;font-size:13px;text-decoration:none;font-weight:600;cursor:pointer}
+.dash-layout{display:flex;min-height:100vh}
+.sidebar{width:240px;background:#1a3a2a;display:flex;flex-direction:column;position:fixed;top:0;bottom:0;left:0;z-index:50;overflow-y:auto}
+.sidebar-logo{padding:20px 16px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.sidebar-logo .name{color:white;font-size:15px;font-weight:700}
+.sidebar-logo .role{color:rgba(255,255,255,0.4);font-size:11px;margin-top:2px}
+.sidebar-logo .emoji{font-size:24px;margin-bottom:8px;display:block}
+.nav-section{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.3);font-weight:700;padding:16px 16px 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 16px;color:rgba(255,255,255,0.6);font-size:14px;cursor:pointer;border-radius:8px;margin:2px 8px;transition:all 0.2s}
+.nav-item:hover{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.9)}
+.nav-item.active{background:rgba(212,160,23,0.15);color:#f0c040}
+.nav-badge{margin-left:auto;background:#e63946;color:white;font-size:10px;font-weight:700;padding:2px 6px;border-radius:8px}
+.sidebar-user{padding:16px;border-top:1px solid rgba(255,255,255,0.08);margin-top:auto}
+.dash-main{margin-left:240px;flex:1;min-width:0}
+.topbar{background:white;border-bottom:1px solid #e5e5e5;padding:0 28px;height:60px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:40}
+.topbar-title{font-size:17px;font-weight:700;color:#1a3a2a;flex:1}
+.dash-content{padding:28px;display:none}
+.dash-content.active{display:block}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.kpi-card{background:white;border-radius:12px;padding:20px;border:1px solid #e5e5e5;position:relative;overflow:hidden}
+.kpi-accent{height:3px;position:absolute;top:0;left:0;right:0;border-radius:12px 12px 0 0}
+.kpi-label{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.kpi-val{font-size:26px;font-weight:800;color:#1a3a2a;line-height:1}
+.kpi-sub{font-size:12px;color:#2d6a4f;margin-top:6px;font-weight:600}
+.kpi-icon{position:absolute;top:16px;right:16px;font-size:28px;opacity:0.12}
+.table-card{background:white;border-radius:12px;border:1px solid #e5e5e5;overflow:hidden;margin-bottom:20px}
+.table-card-header{padding:16px 20px;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.table-card-title{font-size:15px;font-weight:700;color:#1a3a2a}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{padding:10px 14px;text-align:left;font-size:11px;font-weight:700;color:#999;text-transform:uppercase;background:#fafafa;border-bottom:1px solid #e5e5e5;white-space:nowrap}
+td{padding:12px 14px;font-size:13px;color:#333;border-bottom:1px solid #f0f0f0;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#fafff8}
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.badge-green{background:#e8f5e9;color:#2d6a4f}
+.badge-gold{background:#fff8e1;color:#d4a017}
+.badge-red{background:#fce8e6;color:#e63946}
+.badge-blue{background:#e3f2fd;color:#1976d2}
+.td-green{color:#2d6a4f;font-weight:700}
+.td-red{color:#e63946;font-weight:700}
+.td-gold{color:#d4a017;font-weight:700}
+.td-mono{font-family:monospace;font-size:13px}
+.td-bold{font-weight:700}
+.icon-btn{border:none;background:#fef1f1;border-radius:6px;padding:5px 9px;cursor:pointer}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:white;border-radius:16px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto}
+.modal-header{padding:20px 24px;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-size:17px;font-weight:700;color:#1a3a2a}
+.modal-close{background:#f5f5f5;border:none;width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.modal-body{padding:24px}
+.calc-box{background:#f5fdf8;border:1px solid #c8e6c9;border-radius:10px;padding:14px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+.calc-label{font-size:13px;color:#555}
+.calc-val{font-size:18px;font-weight:800;color:#2d6a4f;font-family:monospace}
+.chart-wrap{padding:20px}
+.chart-bars{display:flex;align-items:flex-end;gap:8px;height:160px}
+.chart-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.bar-rev{border-radius:4px 4px 0 0;background:linear-gradient(180deg,#2d6a4f,#40916c);width:60%;transition:height 0.8s}
+.bar-exp{border-radius:4px 4px 0 0;background:linear-gradient(180deg,#d4a017,#f0c040);width:60%;transition:height 0.8s}
+.chart-month{font-size:10px;color:#999;font-weight:600}
+.chart-legend{display:flex;gap:16px;margin-bottom:12px}
+.legend-dot{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:5px}
+#toast{position:fixed;bottom:24px;right:24px;background:#1a3a2a;color:white;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;z-index:999;transform:translateY(80px);opacity:0;transition:all 0.4s;pointer-events:none;max-width:360px}
+#toast.show{transform:translateY(0);opacity:1}
+#toast.error{background:#7a2530}
+.stock-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #f0f0f0}
+.stock-row:last-child{border-bottom:none}
+.stock-emoji{font-size:22px;width:40px;height:40px;background:#f5f5f5;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.stock-info{min-width:120px}
+.stock-name{font-size:14px;font-weight:700;color:#1a3a2a}
+.stock-bar-wrap{flex:1}
+.stock-bar{height:8px;background:#eee;border-radius:4px;overflow:hidden}
+.stock-bar-fill{height:100%;border-radius:4px;transition:width 1s}
+.stock-qty{text-align:right;min-width:70px}
+.stock-qty-val{font-size:15px;font-weight:700;color:#1a3a2a;font-family:monospace}
+.upload-area{border:2px dashed #c4b5fd;border-radius:12px;padding:32px;text-align:center;cursor:pointer;transition:all 0.2s;background:#faf8ff}
+.upload-area:hover{border-color:#6c47d4;background:#f3f0ff}
+.upload-area.dragover{border-color:#6c47d4;background:#ede9fe}
+.upload-icon{font-size:40px;margin-bottom:8px}
+.upload-text{font-size:14px;color:#666;margin-bottom:4px}
+.upload-sub{font-size:12px;color:#999}
+.result-box{background:#f0faf4;border:1px solid #c8e6c9;border-radius:10px;padding:14px;margin-top:12px;display:none}
+.result-title{font-size:13px;font-weight:700;color:#2d6a4f;margin-bottom:8px}
+.info-box{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid #c4b5fd;border-radius:12px;padding:18px;margin-bottom:18px}
+.info-box-title{font-size:14px;font-weight:700;color:#6d28d9;margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.info-box-body{font-size:13px;color:#4c3d7a;line-height:1.65;white-space:pre-wrap}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(0,0,0,.15);border-top-color:#2d6a4f;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{padding:40px 20px;text-align:center;color:#999;font-size:13px}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#f0f0f0}::-webkit-scrollbar-thumb{background:#2d6a4f;border-radius:3px}
+@media(max-width:768px){
+  .kpi-grid{grid-template-columns:repeat(2,1fr)}
+  .grid-3,.grid-2,.form-row,.hero-stats{grid-template-columns:1fr;display:block}
+  .sidebar{width:210px}
+  .dash-main{margin-left:210px}
+  .hero{padding:60px 20px}
+  .hero h1{font-size:28px}
+}
+@media(max-width:560px){
+  .sidebar{position:fixed;transform:translateX(-100%);transition:transform .25s;width:230px}
+  .sidebar.open{transform:translateX(0)}
+  .dash-main{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== PUBLIC HOME ====== -->
+<div id="page-home" class="page active">
+  <nav class="topnav">
+    <div class="logo">🌾 Aditya Trading<span>अनाज मंडी ट्रेडिंग</span></div>
+    <div class="nav-links">
+      <a href="#">Home</a><a href="#">Services</a><a href="#">Crops</a><a href="#">Contact</a>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-outline" onclick="showPage('login')">Login</button>
+    </div>
+  </nav>
+  <div class="hero">
+    <h1>India's Premier <span>Crop Trading</span> Platform</h1>
+    <p>Connecting farmers and grain markets with transparent pricing</p>
+    <div class="hero-hindi">खेती से मुनाफे तक — हर कदम पर साथ</div>
+    <div class="hero-btns">
+      <button class="btn btn-gold" style="padding:12px 28px;font-size:16px" onclick="showPage('login')">🚀 Staff Login</button>
+    </div>
+  </div>
+  <div class="section">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="section-title">Our <span>Services</span></div>
+      <div class="section-sub">End-to-end agricultural trading support</div>
+    </div>
+    <div class="grid-3">
+      <div class="card"><div class="card-icon">🛒</div><div class="card-title">Crop Procurement</div><div class="card-desc">Direct purchase from farmers at fair market rates with transparent weighing and grading.</div></div>
+      <div class="card"><div class="card-icon">📦</div><div class="card-title">Storage & Warehousing</div><div class="card-desc">Real-time digital inventory tracking, always in sync with purchases and sales.</div></div>
+      <div class="card"><div class="card-icon">🚚</div><div class="card-title">Transportation</div><div class="card-desc">Reliable logistics across mandi locations with timely delivery.</div></div>
+      <div class="card"><div class="card-icon">💹</div><div class="card-title">Market Trading</div><div class="card-desc">Expert mandi trading with deep market knowledge for best crop rates.</div></div>
+      <div class="card"><div class="card-icon">🤝</div><div class="card-title">Partner Network</div><div class="card-desc">Manage your trading partner ecosystem in one place.</div></div>
+      <div class="card"><div class="card-icon">📊</div><div class="card-title">Live Reports</div><div class="card-desc">Purchases, sales, expenses and profit — always computed from real records.</div></div>
+    </div>
+  </div>
+  <footer>
+    <div class="logo">🌾 Aditya Trading Company</div>
+    <p>&copy; 2026 Aditya Trading Company. All rights reserved.</p>
+  </footer>
+</div>
+
+<!-- ====== LOGIN ====== -->
+<div id="page-login" class="page">
+  <div class="login-wrap">
+    <div class="login-box">
+      <div class="login-logo">
+        <div class="icon">🌾</div>
+        <h2>Aditya Trading Company</h2>
+        <p>Sign in to your account</p>
+      </div>
+      <div class="login-error" id="login-error"></div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" id="login-user" type="email" placeholder="you@company.com" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input class="form-input" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button class="login-submit" id="login-btn" onclick="doLogin()">Sign In →</button>
+      <div class="back-link"><a onclick="showPage('home')">← Back to home</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ADMIN / STAFF DASHBOARD ====== -->
+<div id="page-admin" class="page">
+  <div class="dash-layout">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <span class="emoji">🌾</span>
+        <div class="name">Aditya Trading</div>
+        <div class="role" id="sidebar-user-label">—</div>
+      </div>
+      <div class="nav-section">Main</div>
+      <div class="nav-item active" data-sec="dashboard" onclick="showSection('dashboard', this)">📊 Dashboard</div>
+      <div class="nav-item" data-sec="stock" onclick="showSection('stock', this)">🏪 Stock</div>
+      <div class="nav-item" data-sec="expenses" onclick="showSection('expenses', this)">💸 Expenses</div>
+      <div class="nav-item" data-sec="reports" onclick="showSection('reports', this)">📈 Reports</div>
+      <div class="nav-item" data-sec="partners" onclick="showSection('partners', this)">🤝 Partners</div>
+      <div class="nav-item" data-sec="notifications" onclick="showSection('notifications', this)">🔔 Notifications<span class="nav-badge" id="notif-badge" style="display:none">0</span></div>
+      <div class="nav-item" id="nav-users" data-sec="users" onclick="showSection('users', this)" style="display:none">👤 Users</div>
+      <div class="sidebar-user">
+        <button class="btn btn-outline" style="width:100%" onclick="doLogout()">Log out</button>
+      </div>
+    </div>
+
+    <div class="dash-main">
+      <div class="topbar">
+        <button class="btn btn-outline" style="display:none;color:#1a3a2a;border-color:#ccc" id="mobile-menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+        <div class="topbar-title" id="section-title">Dashboard</div>
+        <button class="btn btn-green btn-sm" onclick="openModal('modal-upload')">📊 Import Excel</button>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div id="sec-dashboard" class="dash-content active">
+        <div class="kpi-grid" id="dash-kpis">
+          <div class="kpi-card"><div class="kpi-accent" style="background:#2d6a4f"></div><div class="kpi-label">Total Revenue</div><div class="kpi-val">—</div></div>
+          <div class="kpi-card"><div class="kpi-accent" style="background:#e63946"></div><div class="kpi-label">Total Costs</div><div class="kpi-val">—</div></div>
+          <div class="kpi-card"><div class="kpi-accent" style="background:#1976d2"></div><div class="kpi-label">Net Profit</div><div class="kpi-val">—</div></div>
+          <div class="kpi-card"><div class="kpi-accent" style="background:#d4a017"></div><div class="kpi-label">Pending Payments</div><div class="kpi-val">—</div></div>
+        </div>
+        <div class="grid-2" style="margin-bottom:20px">
+          <div class="table-card">
+            <div class="table-card-header">
+              <div class="table-card-title">Revenue vs Expenses (6 months)</div>
+            </div>
+            <div class="chart-wrap">
+              <div class="chart-legend"><span><span class="legend-dot" style="background:#2d6a4f"></span>Revenue</span><span><span class="legend-dot" style="background:#d4a017"></span>Expenses</span></div>
+              <div class="chart-bars" id="dash-chart"></div>
+            </div>
+          </div>
+          <div class="table-card">
+            <div class="table-card-header"><div class="table-card-title">Current Stock</div></div>
+            <div style="padding:8px 16px 16px" id="dash-stock"></div>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-card-header"><div class="table-card-title">Recent Transactions</div></div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Date</th><th>Type</th><th>Crop</th><th>Party</th><th>Qty</th><th>Rate</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody id="dash-tbody"><tr><td colspan="8" class="empty-state">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- STOCK (merged: stock report + new purchase/sale entry + combined ledger) -->
+      <div id="sec-stock" class="dash-content">
+        <div class="table-card">
+          <div class="table-card-header">
+            <div class="table-card-title">🏪 Warehouse Inventory — Live</div>
+            <button class="btn btn-outline" style="color:#1a3a2a;border-color:#ccc" onclick="exportData('stock','xlsx')">⬇ Excel</button>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Crop</th><th>Purchased</th><th>Sold</th><th>Current Stock</th><th>Status</th></tr></thead>
+            <tbody id="stock-tbody"><tr><td colspan="5" class="empty-state">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-card-header">
+            <div class="table-card-title">Purchase &amp; Sale Records</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button class="btn btn-outline" style="color:#1a3a2a;border-color:#ccc" onclick="exportData('purchases','xlsx')">⬇ Purchases</button>
+              <button class="btn btn-outline" style="color:#1a3a2a;border-color:#ccc" onclick="exportData('sales','xlsx')">⬇ Sales</button>
+              <button class="btn btn-green btn-sm" onclick="openEntryModal()">+ New Entry</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Date</th><th>Type</th><th>Crop</th><th>Party / Buyer</th><th>Qty(Q)</th><th>Rate/Q</th><th>Transport</th><th>Total</th><th>Profit</th><th>Status</th><th></th></tr></thead>
+            <tbody id="entry-tbody"><tr><td colspan="11" class="empty-state">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPENSES -->
+      <div id="sec-expenses" class="dash-content">
+        <div class="table-card">
+          <div class="table-card-header">
+            <div class="table-card-title">Expense Log</div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-outline" style="color:#1a3a2a;border-color:#ccc" onclick="exportData('expenses','xlsx')">⬇ Excel</button>
+              <button class="btn btn-green btn-sm" onclick="openModal('modal-expense')">+ Add Expense</button>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Qty</th><th>Rate</th><th>Amount</th><th>Trade Ref</th><th></th></tr></thead>
+            <tbody id="exp-tbody"><tr><td colspan="8" class="empty-state">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORTS -->
+      <div id="sec-reports" class="dash-content">
+        <div class="table-card">
+          <div class="table-card-header">
+            <div class="table-card-title">Reports</div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <input class="form-input" type="date" id="rep-from" style="width:150px">
+              <input class="form-input" type="date" id="rep-to" style="width:150px">
+              <button class="btn btn-green btn-sm" onclick="loadReports()">Run</button>
+            </div>
+          </div>
+          <div style="padding:20px" id="report-summary"></div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Crop</th><th>Purchased(Q)</th><th>Purchase Cost</th><th>Sold(Q)</th><th>Sale Revenue</th></tr></thead>
+            <tbody id="rep-tbody"><tr><td colspan="5" class="empty-state">Choose a date range and click Run.</td></tr></tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PARTNERS -->
+      <div id="sec-partners" class="dash-content">
+        <div class="table-card">
+          <div class="table-card-header">
+            <div class="table-card-title">Trading Partners</div>
+            <button class="btn btn-green btn-sm" onclick="openModal('modal-partner')">+ Add Partner</button>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Name</th><th>Type</th><th>Phone</th><th>Email</th><th>Balance</th><th></th></tr></thead>
+            <tbody id="partner-tbody"><tr><td colspan="6" class="empty-state">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTIFICATIONS -->
+      <div id="sec-notifications" class="dash-content">
+        <div class="table-card">
+          <div class="table-card-header"><div class="table-card-title">Notifications</div></div>
+          <div id="notif-list" style="padding:8px 20px"></div>
+        </div>
+      </div>
+
+      <!-- USERS (admin only) -->
+      <div id="sec-users" class="dash-content">
+        <div class="table-card">
+          <div class="table-card-header">
+            <div class="table-card-title">Staff / Partner Logins</div>
+            <button class="btn btn-green btn-sm" onclick="openModal('modal-user')">+ Add User</button>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Created</th><th></th></tr></thead>
+            <tbody id="users-tbody"><tr><td colspan="6" class="empty-state">Loading…</td></tr></tbody></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: USER ===== -->
+<div class="modal-overlay" id="modal-user">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">👤 Add Staff / Partner Login</div><button class="modal-close" onclick="closeModal('modal-user')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" id="u-name"></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="u-email" type="email"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Role</label><select class="form-input" id="u-role"><option value="partner">Partner (view + add entries)</option><option value="admin">Admin (full access)</option></select></div>
+        <div class="form-group"><label class="form-label">Temporary Password</label><input class="form-input" id="u-pass" type="text" placeholder="min. 8 characters"></div>
+      </div>
+      <div class="field-error" id="u-error"></div>
+      <button class="btn btn-green" style="width:100%;padding:12px" id="u-save-btn" onclick="saveUser()">Create Login</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: NEW ENTRY (Purchase or Sale) ===== -->
+<div class="modal-overlay" id="modal-entry">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="entry-modal-title">📥 New Entry</div><button class="modal-close" onclick="closeModal('modal-entry')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Entry Type</label>
+        <select class="form-input" id="ent-type" onchange="onEntryTypeChange()">
+          <option value="purchase">📥 Purchase</option>
+          <option value="sale">📤 Sale</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Date</label><input class="form-input" type="date" id="ent-date"></div>
+        <div class="form-group"><label class="form-label">Crop</label><select class="form-input" id="ent-crop"></select></div>
+      </div>
+      <div class="form-group"><label class="form-label" id="ent-party-label">Party / Farmer Name</label><input class="form-input" id="ent-party" placeholder="e.g. Ramesh Patidar"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Quantity (Quintal)</label><input class="form-input" type="number" id="ent-qty" min="0.01" step="0.01" oninput="calcEntry()"></div>
+        <div class="form-group"><label class="form-label">Rate per Quintal (₹)</label><input class="form-input" type="number" id="ent-rate" min="0" step="0.01" oninput="calcEntry()"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" id="ent-transport-group"><label class="form-label">Transport (₹)</label><input class="form-input" type="number" id="ent-transport" min="0" step="0.01" value="0"></div>
+        <div class="form-group"><label class="form-label">Status</label><select class="form-input" id="ent-status"><option>Pending</option><option>Partial</option><option>Paid</option></select></div>
+      </div>
+      <div class="calc-box"><span class="calc-label">Total Amount</span><span class="calc-val" id="ent-total">₹0</span></div>
+
+      <div style="margin:14px 0 4px">
+        <a onclick="toggleMandiFields()" style="color:#2d6a4f;font-size:13px;font-weight:600;cursor:pointer" id="mandi-toggle-link">▸ Mandi / storage details (optional)</a>
+      </div>
+      <div id="mandi-fields" style="display:none">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Stored In</label><select class="form-input" id="ent-stored-in"><option value="">—</option><option value="ATC">ATC (own godown)</option><option value="NCML">NCML</option><option value="Mandi">Mandi</option></select></div>
+          <div class="form-group"><label class="form-label">Mandi Portal</label><select class="form-input" id="ent-mandi-portal"><option value="">—</option><option value="Y">Yes</option><option value="N">No</option></select></div>
+        </div>
+        <div class="form-group"><label class="form-label">Source</label><select class="form-input" id="ent-source"><option value="">—</option><option value="URD">URD (unregistered dealer)</option><option value="Mandi">Mandi</option><option value="B2B">B2B</option></select></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Billed Qty (if different)</label><input class="form-input" type="number" step="0.01" id="ent-billed-qty"></div>
+          <div class="form-group"><label class="form-label">Billed Rate (if different)</label><input class="form-input" type="number" step="0.01" id="ent-billed-rate"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Himmali / Labour (₹)</label><input class="form-input" type="number" step="0.01" id="ent-himmali" value="0"></div>
+          <div class="form-group"><label class="form-label">Tulai / Weighing (₹)</label><input class="form-input" type="number" step="0.01" id="ent-tulai" value="0"></div>
+        </div>
+      </div>
+
+      <div class="field-error" id="ent-error"></div>
+      <button class="btn btn-green" style="width:100%;padding:12px;margin-top:8px" id="ent-save-btn" onclick="saveEntry()">Save Entry</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: EXPENSE ===== -->
+<div class="modal-overlay" id="modal-expense">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">💸 Add Expense</div><button class="modal-close" onclick="closeModal('modal-expense')">✕</button></div>
+
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Date</label><input class="form-input" type="date" id="e-date"></div>
+        <div class="form-group"><label class="form-label">Category</label>
+          <select class="form-input" id="e-category"><option>Labour</option><option>Transport</option><option>Bardan/Storage</option><option>Misc</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Description</label><input class="form-input" id="e-desc" placeholder="e.g. Loading wheat — Warehouse A"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Qty (optional)</label><input class="form-input" type="number" id="e-qty" step="0.01" oninput="calcE()"></div>
+        <div class="form-group"><label class="form-label">Rate (optional)</label><input class="form-input" type="number" id="e-rate" step="0.01" oninput="calcE()"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Amount (₹)</label><input class="form-input" type="number" id="e-amt" min="0" step="0.01"></div>
+        <div class="form-group"><label class="form-label">Trade Ref (optional)</label><input class="form-input" id="e-trade" placeholder="e.g. PUR-114"></div>
+      </div>
+      <div class="field-error" id="e-error"></div>
+      <button class="btn btn-green" style="width:100%;padding:12px" id="e-save-btn" onclick="saveExpense()">Save Expense</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: PARTNER ===== -->
+<div class="modal-overlay" id="modal-partner">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title">🤝 Add Partner</div><button class="modal-close" onclick="closeModal('modal-partner')">✕</button></div>
+    <div class="modal-body">
+      <div class="form-group"><label class="form-label">Name / Company</label><input class="form-input" id="pt-name" placeholder="e.g. Suresh Exports"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Type</label><select class="form-input" id="pt-type"><option>Investor</option><option>Broker</option><option>Buyer</option><option>Supplier</option><option>Transporter</option></select></div>
+        <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="pt-phone"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="pt-email" type="email"></div>
+        <div class="form-group"><label class="form-label">Opening Balance (₹)</label><input class="form-input" id="pt-balance" type="number" step="0.01" value="0"></div>
+      </div>
+      <div class="field-error" id="pt-error"></div>
+      <button class="btn btn-green" style="width:100%;padding:12px" id="pt-save-btn" onclick="savePartner()">Save Partner</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL: EXCEL UPLOAD ===== -->
+<div class="modal-overlay" id="modal-upload">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-header"><div class="modal-title">📊 Excel / CSV Import</div><button class="modal-close" onclick="closeModal('modal-upload');resetUpload()">✕</button></div>
+    <div class="modal-body">
+      <div class="info-box">
+        <div class="info-box-title">Bulk import</div>
+        <div class="info-box-body" style="color:#4c3d7a">Upload an .xlsx or .csv file. Expected first-row headers: <b>date, crop, party/buyer, qty, rate, transport (purchases only), status</b>. Optional: stored_in, mandi_portal, source, billed_qty, billed_rate, himmali, tulai.</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Data Type</label>
+        <select class="form-input" id="upload-type">
+          <option value="purchases">📥 Purchases</option>
+          <option value="sales">📤 Sales</option>
+          <option value="expenses">💸 Expenses</option>
+        </select>
+      </div>
+      <div class="upload-area" id="upload-area" onclick="document.getElementById('excel-file').click()" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropFile(event)">
+        <div class="upload-icon" id="upload-icon">📁</div>
+        <div class="upload-text" id="upload-text">Drop file here or click to browse</div>
+        <div class="upload-sub" id="upload-sub">.xlsx, .csv supported</div>
+      </div>
+      <input type="file" id="excel-file" accept=".xlsx,.csv" style="display:none" onchange="fileSelected(this)">
+      <div class="result-box" id="result-box"><div class="result-title" id="result-title"></div><div id="result-items"></div></div>
+      <div id="upload-error" style="display:none;background:#fff0f0;border:1px solid #fcc;border-radius:10px;padding:12px;margin-top:12px;font-size:13px;color:#e63946"></div>
+      <div style="display:flex;gap:12px;margin-top:16px">
+        <button class="btn btn-green" style="flex:1;padding:12px" id="upload-btn" onclick="startUpload()">🚀 Upload & Import</button>
+        <button class="btn" style="padding:12px;border:1.5px solid #ddd;background:white;border-radius:8px;color:#555" onclick="resetUpload();closeModal('modal-upload')">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ============================================================
+// API CLIENT
+// ============================================================
+const API = '/api';
+async function api(path, opts) {
+  opts = opts || {};
+  opts.headers = Object.assign({ 'Content-Type': 'application/json', 'X-Requested-With': 'atc-frontend' }, opts.headers || {});
+  opts.credentials = 'include';
+  const res = await fetch(API + path, opts);
+  if (res.status === 401 && path !== '/auth/me') {
+    showPage('login');
+    throw new Error('Session expired. Please log in again.');
+  }
+  const isJson = (res.headers.get('content-type') || '').includes('application/json');
+  const data = isJson ? await res.json().catch(() => ({})) : await res.blob();
+  if (!res.ok) throw new Error((data && data.error) || ('Request failed (' + res.status + ')'));
+  return data;
+}
+
+let CURRENT_USER = null;
+let CROPS = [];
+
+// ============================================================
+// PAGE / SECTION NAV
+// ============================================================
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const p = document.getElementById('page-' + name);
+  if (p) p.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function showSection(name, el) {
+  document.querySelectorAll('.dash-content').forEach(s => s.classList.remove('active'));
+  const sec = document.getElementById('sec-' + name);
+  if (sec) sec.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+  if (el) el.classList.add('active');
+  const titles = { dashboard: 'Dashboard', stock: 'Stock', expenses: 'Expenses', reports: 'Reports', partners: 'Partners', notifications: 'Notifications', users: 'Users' };
+  document.getElementById('section-title').textContent = titles[name] || name;
+  document.getElementById('sidebar').classList.remove('open');
+  loadSection(name);
+}
+
+function loadSection(name) {
+  if (name === 'dashboard') loadDashboard();
+  else if (name === 'stock') loadStockPage();
+  else if (name === 'expenses') loadExpenses();
+  else if (name === 'partners') loadPartners();
+  else if (name === 'notifications') loadNotifications();
+  else if (name === 'users') loadUsers();
+}
+
+// ============================================================
+// MODALS / TOAST
+// ============================================================
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.addEventListener('click', e => { if (e.target.classList.contains('modal-overlay')) e.target.classList.remove('open'); });
+
+let toastTimer;
+function showToast(msg, isError) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.toggle('error', !!isError);
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+function rupees(n) { return '₹' + Number(n || 0).toLocaleString('en-IN', { maximumFractionDigits: 2 }); }
+function badge(s) { const m = { Paid: 'badge-green', Pending: 'badge-red', Partial: 'badge-gold' }; return '<span class="badge ' + (m[s] || 'badge-blue') + '">' + s + '</span>'; }
+function todayISO() { return new Date().toISOString().split('T')[0]; }
+function esc(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; }
+
+// ============================================================
+// AUTH
+// ============================================================
+async function doLogin() {
+  const email = document.getElementById('login-user').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  const err = document.getElementById('login-error');
+  err.style.display = 'none';
+  if (!email || !pass) { err.textContent = 'Email and password are required.'; err.style.display = 'block'; return; }
+  const btn = document.getElementById('login-btn');
+  btn.disabled = true; btn.textContent = 'Signing in…';
+  try {
+    const data = await api('/auth/login', { method: 'POST', body: JSON.stringify({ email, password: pass }) });
+    CURRENT_USER = data.user;
+    await bootDashboard();
+    showPage('admin');
+  } catch (e) {
+    err.textContent = e.message; err.style.display = 'block';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Sign In →';
+  }
+}
+
+async function doLogout() {
+  try { await api('/auth/logout', { method: 'POST' }); } catch (e) {}
+  CURRENT_USER = null;
+  showPage('home');
+  showToast('👋 Logged out');
+}
+
+async function bootDashboard() {
+  document.getElementById('sidebar-user-label').textContent = CURRENT_USER.name + ' · ' + CURRENT_USER.role;
+  // Hide partner-management add button for non-admins
+  if (CURRENT_USER.role !== 'admin') {
+    document.querySelectorAll('#sec-partners .btn-green').forEach(b => b.style.display = 'none');
+  } else {
+    document.getElementById('nav-users').style.display = 'flex';
+  }
+  const cropData = await api('/crops');
+  CROPS = cropData.crops;
+  const opts = CROPS.map(c => `<option>${esc(c.name)}</option>`).join('');
+  document.getElementById('ent-crop').innerHTML = opts;
+  document.getElementById('ent-date').value = todayISO();
+  document.getElementById('e-date').value = todayISO();
+  showSection('dashboard', document.querySelector('.nav-item[data-sec="dashboard"]'));
+  loadNotifications(true);
+}
+
+// try to resume session on load
+(async function initSession() {
+  try {
+    const data = await api('/auth/me');
+    CURRENT_USER = data.user;
+    await bootDashboard();
+    showPage('admin');
+  } catch (e) { /* not logged in, stay on home */ }
+})();
+
+// ============================================================
+// DASHBOARD
+// ============================================================
+async function loadDashboard() {
+  try {
+    const d = await api('/dashboard');
+    const kpis = document.getElementById('dash-kpis');
+    kpis.innerHTML = `
+      <div class="kpi-card"><div class="kpi-accent" style="background:#2d6a4f"></div><div class="kpi-label">Total Revenue</div><div class="kpi-val">${rupees(d.kpis.totalRevenue)}</div></div>
+      <div class="kpi-card"><div class="kpi-accent" style="background:#e63946"></div><div class="kpi-label">Total Costs</div><div class="kpi-val">${rupees(d.kpis.totalExpenses)}</div></div>
+      <div class="kpi-card"><div class="kpi-accent" style="background:#1976d2"></div><div class="kpi-label">Net Profit</div><div class="kpi-val" style="color:${d.kpis.netProfit >= 0 ? '#1a3a2a' : '#e63946'}">${rupees(d.kpis.netProfit)}</div></div>
+      <div class="kpi-card"><div class="kpi-accent" style="background:#d4a017"></div><div class="kpi-label">Pending Payments</div><div class="kpi-val">${rupees(d.kpis.pendingAmount)}</div><div class="kpi-sub" style="color:#e63946">${d.kpis.pendingCount} entries</div></div>`;
+
+    const maxVal = Math.max(1, ...d.monthlyChart.flatMap(m => [m.revenue, m.expenses]));
+    document.getElementById('dash-chart').innerHTML = d.monthlyChart.map(m => {
+      const rh = Math.round((m.revenue / maxVal) * 100), eh = Math.round((m.expenses / maxVal) * 100);
+      const label = new Date(m.month + '-01').toLocaleDateString('en-IN', { month: 'short' });
+      return `<div class="chart-col"><div style="display:flex;gap:3px;align-items:flex-end;height:140px"><div class="bar-rev" style="height:${rh}%"></div><div class="bar-exp" style="height:${eh}%"></div></div><div class="chart-month">${label}</div></div>`;
+    }).join('');
+
+    const stockData = await api('/stock');
+    const maxStock = Math.max(1, ...stockData.stock.map(s => s.inStock));
+    document.getElementById('dash-stock').innerHTML = stockData.stock.map(s => {
+      const pct = Math.max(2, Math.round((s.inStock / maxStock) * 100));
+      const low = s.inStock < 100;
+      return `<div class="stock-row"><div class="stock-emoji">🌾</div><div class="stock-info"><div class="stock-name">${esc(s.crop)}</div></div><div class="stock-bar-wrap"><div class="stock-bar"><div class="stock-bar-fill" style="width:${pct}%;background:${low ? '#e63946' : '#2d6a4f'}"></div></div></div><div class="stock-qty"><div class="stock-qty-val" style="${low ? 'color:#e63946' : ''}">${s.inStock}Q${low ? ' ⚠️' : ''}</div></div></div>`;
+    }).join('') || '<div class="empty-state">No stock yet.</div>';
+
+    document.getElementById('dash-tbody').innerHTML = d.recentTransactions.length ? d.recentTransactions.map(t => `
+      <tr><td>${esc(t.date)}</td><td>${badge2(t.kind)}</td><td>${esc(t.crop)}</td><td>${esc(t.party_name || t.buyer_name)}</td>
+      <td class="td-mono">${t.qty}Q</td><td class="td-mono">${rupees(t.rate)}</td><td class="td-green td-mono">${rupees(t.total)}</td><td>${badge(t.status)}</td></tr>`).join('')
+      : '<tr><td colspan="8" class="empty-state">No transactions yet. Add a purchase or sale to get started.</td></tr>';
+  } catch (e) { showToast(e.message, true); }
+}
+function badge2(kind) { return kind === 'purchase' ? '<span class="badge badge-green">Purchase</span>' : '<span class="badge badge-gold">Sale</span>'; }
+
+// ============================================================
+// STOCK PAGE (report on top, combined purchase+sale ledger below)
+// ============================================================
+async function loadStockPage() {
+  const stockTb = document.getElementById('stock-tbody');
+  const entryTb = document.getElementById('entry-tbody');
+  stockTb.innerHTML = '<tr><td colspan="5" class="empty-state"><span class="spinner"></span></td></tr>';
+  entryTb.innerHTML = '<tr><td colspan="11" class="empty-state"><span class="spinner"></span></td></tr>';
+  try {
+    const d = await api('/stock');
+    stockTb.innerHTML = d.stock.map(s => {
+      const low = s.inStock < 100, zero = s.inStock <= 0;
+      const st = zero ? '<span class="badge badge-red">Empty</span>' : low ? '<span class="badge badge-gold">Low</span>' : '<span class="badge badge-green">Good</span>';
+      const loc = s.byLocation || {};
+      const locBits = ['ATC', 'NCML', 'Mandi'].filter(k => loc[k]).map(k => `${k}: ${loc[k]}Q`).join(' · ');
+      return `<tr><td class="td-bold">${esc(s.crop)}</td><td class="td-green td-mono">+${s.purchased}Q</td><td class="td-red td-mono">-${s.sold}Q</td>
+        <td class="td-mono td-bold">${s.inStock}Q${locBits ? `<div style="font-size:10px;color:#999;font-weight:400">${locBits}</div>` : ''}</td><td>${st}</td></tr>`;
+    }).join('');
+  } catch (e) { showToast(e.message, true); }
+
+  try {
+    const [pd, sd] = await Promise.all([api('/purchases'), api('/sales')]);
+    const combined = [
+      ...pd.purchases.map(p => ({ ...p, kind: 'purchase', party: p.party_name })),
+      ...sd.sales.map(s => ({ ...s, kind: 'sale', party: s.buyer_name }))
+    ].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : b.id - a.id));
+
+    entryTb.innerHTML = combined.length ? combined.map(t => `
+      <tr><td>${esc(t.date)}</td><td>${badge2(t.kind)}</td><td>${esc(t.crop)}</td><td class="td-bold">${esc(t.party)}</td>
+      <td class="td-mono">${t.qty}</td><td class="td-mono">${rupees(t.rate)}</td>
+      <td class="td-mono">${t.kind === 'purchase' ? rupees(t.transport) : '—'}</td>
+      <td class="td-green td-mono">${rupees(t.total)}</td>
+      <td class="${t.profit == null ? '' : (t.profit >= 0 ? 'td-green' : 'td-red')} td-mono">${t.kind === 'sale' ? (t.profit == null ? '—' : (t.profit >= 0 ? '+' : '') + rupees(t.profit)) : '—'}</td>
+      <td>${badge(t.status)}</td>
+      <td><button class="icon-btn" onclick="deleteEntry('${t.kind}',${t.id})">🗑️</button></td></tr>`).join('')
+      : '<tr><td colspan="11" class="empty-state">No purchases or sales yet. Click "+ New Entry" to add one.</td></tr>';
+  } catch (e) { showToast(e.message, true); }
+}
+
+function openEntryModal() {
+  document.getElementById('ent-type').value = 'purchase';
+  document.getElementById('ent-date').value = todayISO();
+  ['ent-party', 'ent-qty', 'ent-rate', 'ent-billed-qty', 'ent-billed-rate'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('ent-transport').value = 0;
+  document.getElementById('ent-himmali').value = 0;
+  document.getElementById('ent-tulai').value = 0;
+  document.getElementById('ent-stored-in').value = '';
+  document.getElementById('ent-mandi-portal').value = '';
+  document.getElementById('ent-source').value = '';
+  document.getElementById('ent-status').value = 'Pending';
+  document.getElementById('ent-total').textContent = '₹0';
+  document.getElementById('ent-error').style.display = 'none';
+  document.getElementById('mandi-fields').style.display = 'none';
+  document.getElementById('mandi-toggle-link').textContent = '▸ Mandi / storage details (optional)';
+  onEntryTypeChange();
+  openModal('modal-entry');
+}
+
+function onEntryTypeChange() {
+  const isSale = document.getElementById('ent-type').value === 'sale';
+  document.getElementById('entry-modal-title').textContent = isSale ? '📤 New Sale' : '📥 New Purchase';
+  document.getElementById('ent-party-label').textContent = isSale ? 'Buyer Name' : 'Party / Farmer Name';
+  document.getElementById('ent-party').placeholder = isSale ? 'e.g. City Flour Mill' : 'e.g. Ramesh Patidar';
+  document.getElementById('ent-transport-group').style.display = isSale ? 'none' : '';
+}
+
+function toggleMandiFields() {
+  const box = document.getElementById('mandi-fields');
+  const open = box.style.display !== 'none';
+  box.style.display = open ? 'none' : 'block';
+  document.getElementById('mandi-toggle-link').textContent = open ? '▸ Mandi / storage details (optional)' : '▾ Mandi / storage details (optional)';
+}
+
+function calcEntry() {
+  const q = parseFloat(document.getElementById('ent-qty').value) || 0;
+  const r = parseFloat(document.getElementById('ent-rate').value) || 0;
+  document.getElementById('ent-total').textContent = rupees(q * r);
+}
+
+async function saveEntry() {
+  const errEl = document.getElementById('ent-error'); errEl.style.display = 'none';
+  const isSale = document.getElementById('ent-type').value === 'sale';
+  const body = {
+    date: document.getElementById('ent-date').value,
+    crop: document.getElementById('ent-crop').value,
+    qty: parseFloat(document.getElementById('ent-qty').value),
+    rate: parseFloat(document.getElementById('ent-rate').value),
+    status: document.getElementById('ent-status').value,
+    stored_in: document.getElementById('ent-stored-in').value,
+    mandi_portal: document.getElementById('ent-mandi-portal').value,
+    source: document.getElementById('ent-source').value,
+    billed_qty: document.getElementById('ent-billed-qty').value || undefined,
+    billed_rate: document.getElementById('ent-billed-rate').value || undefined,
+    himmali: parseFloat(document.getElementById('ent-himmali').value) || 0,
+    tulai: parseFloat(document.getElementById('ent-tulai').value) || 0
+  };
+  const partyVal = document.getElementById('ent-party').value.trim();
+  if (isSale) body.buyer_name = partyVal; else { body.party_name = partyVal; body.transport = parseFloat(document.getElementById('ent-transport').value) || 0; }
+
+  const btn = document.getElementById('ent-save-btn'); btn.disabled = true;
+  try {
+    await api(isSale ? '/sales' : '/purchases', { method: 'POST', body: JSON.stringify(body) });
+    closeModal('modal-entry');
+    showToast(isSale ? '✅ Sale saved' : '✅ Purchase saved');
+    loadStockPage(); loadDashboard();
+  } catch (e) { errEl.textContent = e.message; errEl.style.display = 'block'; }
+  finally { btn.disabled = false; }
+}
+
+async function deleteEntry(kind, id) {
+  if (!confirm(`Delete this ${kind}?`)) return;
+  try {
+    await api(`/${kind === 'purchase' ? 'purchases' : 'sales'}/${id}`, { method: 'DELETE' });
+    showToast('Deleted');
+    loadStockPage(); loadDashboard();
+  } catch (e) { showToast(e.message, true); }
+}
+
+// ============================================================
+// EXPENSES
+// ============================================================
+async function loadExpenses() {
+  const tb = document.getElementById('exp-tbody');
+  tb.innerHTML = '<tr><td colspan="8" class="empty-state"><span class="spinner"></span></td></tr>';
+  try {
+    const d = await api('/expenses');
+    tb.innerHTML = d.expenses.length ? d.expenses.map(e => {
+      const bmap = { Labour: 'badge-green', Transport: 'badge-blue', 'Bardan/Storage': 'badge-gold' };
+      return `<tr><td>${esc(e.date)}</td><td><span class="badge ${bmap[e.category] || 'badge-red'}">${esc(e.category)}</span></td>
+      <td>${esc(e.description)}</td><td class="td-mono">${e.qty ?? '—'}</td><td class="td-mono">${e.rate ? rupees(e.rate) : '—'}</td>
+      <td class="td-gold td-mono">${rupees(e.total)}</td><td>${esc(e.trade_ref) || '—'}</td>
+      <td><button class="icon-btn" onclick="deleteExpense(${e.id})">🗑️</button></td></tr>`;
+    }).join('') : '<tr><td colspan="8" class="empty-state">No expenses logged yet.</td></tr>';
+  } catch (e) { showToast(e.message, true); }
+}
+
+function calcE() {
+  const q = parseFloat(document.getElementById('e-qty').value) || 0;
+  const r = parseFloat(document.getElementById('e-rate').value) || 0;
+  if (q > 0 && r > 0) document.getElementById('e-amt').value = (q * r).toFixed(2);
+}
+
+async function saveExpense() {
+  const errEl = document.getElementById('e-error'); errEl.style.display = 'none';
+  const body = {
+    date: document.getElementById('e-date').value,
+    category: document.getElementById('e-category').value,
+    description: document.getElementById('e-desc').value.trim(),
+    qty: document.getElementById('e-qty').value ? parseFloat(document.getElementById('e-qty').value) : null,
+    rate: document.getElementById('e-rate').value ? parseFloat(document.getElementById('e-rate').value) : null,
+    total: parseFloat(document.getElementById('e-amt').value),
+    trade_ref: document.getElementById('e-trade').value.trim()
+  };
+  const btn = document.getElementById('e-save-btn'); btn.disabled = true;
+  try {
+    await api('/expenses', { method: 'POST', body: JSON.stringify(body) });
+    closeModal('modal-expense');
+    ['e-desc', 'e-qty', 'e-rate', 'e-amt', 'e-trade'].forEach(id => document.getElementById(id).value = '');
+    showToast('✅ Expense saved');
+    loadExpenses(); loadDashboard();
+  } catch (e) { errEl.textContent = e.message; errEl.style.display = 'block'; }
+  finally { btn.disabled = false; }
+}
+
+async function deleteExpense(id) {
+  if (!confirm('Delete this expense?')) return;
+  try { await api('/expenses/' + id, { method: 'DELETE' }); showToast('Deleted'); loadExpenses(); loadDashboard(); }
+  catch (e) { showToast(e.message, true); }
+}
+
+// ============================================================
+// PARTNERS
+// ============================================================
+async function loadPartners() {
+  const tb = document.getElementById('partner-tbody');
+  tb.innerHTML = '<tr><td colspan="6" class="empty-state"><span class="spinner"></span></td></tr>';
+  try {
+    const d = await api('/partners');
+    tb.innerHTML = d.partners.length ? d.partners.map(p => `
+      <tr><td class="td-bold">${esc(p.name)}</td><td>${esc(p.type)}</td><td>${esc(p.phone) || '—'}</td><td>${esc(p.email) || '—'}</td>
+      <td class="td-mono">${rupees(p.balance)}</td>
+      <td>${CURRENT_USER.role === 'admin' ? `<button class="icon-btn" onclick="deletePartner(${p.id})">🗑️</button>` : ''}</td></tr>`).join('')
+      : '<tr><td colspan="6" class="empty-state">No partners added yet.</td></tr>';
+  } catch (e) { showToast(e.message, true); }
+}
+
+async function savePartner() {
+  const errEl = document.getElementById('pt-error'); errEl.style.display = 'none';
+  const body = {
+    name: document.getElementById('pt-name').value.trim(),
+    type: document.getElementById('pt-type').value,
+    phone: document.getElementById('pt-phone').value.trim(),
+    email: document.getElementById('pt-email').value.trim(),
+    balance: parseFloat(document.getElementById('pt-balance').value) || 0
+  };
+  const btn = document.getElementById('pt-save-btn'); btn.disabled = true;
+  try {
+    await api('/partners', { method: 'POST', body: JSON.stringify(body) });
+    closeModal('modal-partner');
+    ['pt-name', 'pt-phone', 'pt-email'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('pt-balance').value = 0;
+    showToast('✅ Partner added');
+    loadPartners();
+  } catch (e) { errEl.textContent = e.message; errEl.style.display = 'block'; }
+  finally { btn.disabled = false; }
+}
+
+async function deletePartner(id) {
+  if (!confirm('Delete this partner?')) return;
+  try { await api('/partners/' + id, { method: 'DELETE' }); showToast('Deleted'); loadPartners(); }
+  catch (e) { showToast(e.message, true); }
+}
+
+// ============================================================
+// REPORTS
+// ============================================================
+async function loadReports() {
+  const from = document.getElementById('rep-from').value;
+  const to = document.getElementById('rep-to').value;
+  const q = new URLSearchParams(); if (from) q.set('from', from); if (to) q.set('to', to);
+  try {
+    const d = await api('/reports?' + q.toString());
+    document.getElementById('report-summary').innerHTML = `
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-label">Purchases</div><div class="kpi-val">${rupees(d.totals.purchases)}</div></div>
+        <div class="kpi-card"><div class="kpi-label">Sales</div><div class="kpi-val">${rupees(d.totals.sales)}</div></div>
+        <div class="kpi-card"><div class="kpi-label">Expenses</div><div class="kpi-val">${rupees(d.totals.expenses)}</div></div>
+        <div class="kpi-card"><div class="kpi-label">Net Profit</div><div class="kpi-val" style="color:${d.totals.netProfit >= 0 ? '#1a3a2a' : '#e63946'}">${rupees(d.totals.netProfit)}</div></div>
+      </div>`;
+    document.getElementById('rep-tbody').innerHTML = d.byCrop.length ? d.byCrop.map(c => `
+      <tr><td class="td-bold">${esc(c.crop)}</td><td class="td-mono">${c.purchased}</td><td class="td-mono">${rupees(c.purchaseCost)}</td>
+      <td class="td-mono">${c.sold}</td><td class="td-mono td-green">${rupees(c.saleRevenue)}</td></tr>`).join('')
+      : '<tr><td colspan="5" class="empty-state">No records in this range.</td></tr>';
+  } catch (e) { showToast(e.message, true); }
+}
+
+// ============================================================
+// NOTIFICATIONS
+// ============================================================
+async function loadNotifications(silent) {
+  try {
+    const d = await api('/notifications');
+    const unread = d.notifications.filter(n => !n.is_read).length;
+    const badgeEl = document.getElementById('notif-badge');
+    badgeEl.style.display = unread ? 'inline-block' : 'none';
+    badgeEl.textContent = unread;
+    if (!silent) {
+      document.getElementById('notif-list').innerHTML = d.notifications.length ? d.notifications.map(n => `
+        <div style="padding:12px 0;border-bottom:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center">
+          <div><div style="font-size:13px;${n.is_read ? 'color:#888' : 'font-weight:600'}">${esc(n.message)}</div><div style="font-size:11px;color:#999">${esc(n.created_at)}</div></div>
+        </div>`).join('') : '<div class="empty-state">No notifications.</div>';
+    }
+  } catch (e) { /* ignore on silent boot call */ }
+}
+
+// ============================================================
+// EXPORT
+// ============================================================
+async function exportData(type, format) {
+  try {
+    const res = await fetch(`${API}/export?type=${type}&format=${format}`, { credentials: 'include', headers: { 'X-Requested-With': 'atc-frontend' } });
+    if (!res.ok) { const d = await res.json().catch(() => ({})); throw new Error(d.error || 'Export failed'); }
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `${type}.${format === 'csv' ? 'csv' : 'xlsx'}`;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  } catch (e) { showToast(e.message, true); }
+}
+
+// ============================================================
+// EXCEL/CSV IMPORT
+// ============================================================
+let selectedFile = null;
+function dragOver(e) { e.preventDefault(); document.getElementById('upload-area').classList.add('dragover'); }
+function dragLeave(e) { document.getElementById('upload-area').classList.remove('dragover'); }
+function dropFile(e) { e.preventDefault(); document.getElementById('upload-area').classList.remove('dragover'); if (e.dataTransfer.files[0]) setFile(e.dataTransfer.files[0]); }
+function fileSelected(input) { if (input.files[0]) setFile(input.files[0]); }
+function setFile(file) {
+  selectedFile = file;
+  document.getElementById('upload-icon').textContent = '✅';
+  document.getElementById('upload-text').textContent = file.name;
+  document.getElementById('upload-sub').textContent = (file.size / 1024).toFixed(1) + ' KB — Ready!';
+  document.getElementById('upload-area').style.borderColor = '#2d6a4f';
+  document.getElementById('upload-area').style.background = '#f0faf4';
+  document.getElementById('upload-error').style.display = 'none';
+  document.getElementById('result-box').style.display = 'none';
+}
+function resetUpload() {
+  selectedFile = null;
+  document.getElementById('upload-icon').textContent = '📁';
+  document.getElementById('upload-text').textContent = 'Drop file here or click to browse';
+  document.getElementById('upload-sub').textContent = '.xlsx, .csv supported';
+  document.getElementById('upload-area').style.borderColor = '';
+  document.getElementById('upload-area').style.background = '';
+  document.getElementById('result-box').style.display = 'none';
+  document.getElementById('upload-error').style.display = 'none';
+  document.getElementById('excel-file').value = '';
+}
+async function startUpload() {
+  if (!selectedFile) { showUploadError('Please choose a file first.'); return; }
+  const type = document.getElementById('upload-type').value;
+  const btn = document.getElementById('upload-btn');
+  btn.disabled = true; btn.textContent = '⏳ Importing…';
+  document.getElementById('upload-error').style.display = 'none';
+  try {
+    const isCsv = selectedFile.name.toLowerCase().endsWith('.csv');
+    const buf = await selectedFile.arrayBuffer();
+    const res = await fetch(`${API}/import?type=${type}${isCsv ? '&format=csv' : ''}`, {
+      method: 'POST', credentials: 'include',
+      headers: { 'X-Requested-With': 'atc-frontend', 'Content-Type': isCsv ? 'text/csv' : 'application/octet-stream' },
+      body: buf
+    });
+    const d = await res.json();
+    if (!res.ok) throw new Error(d.error || 'Import failed');
+    document.getElementById('result-title').textContent = `✅ Imported ${d.inserted} row(s), skipped ${d.skipped}`;
+    document.getElementById('result-items').innerHTML = d.errors.slice(0, 10).map(e => `<div style="font-size:12px;color:#e63946">${esc(e)}</div>`).join('');
+    document.getElementById('result-box').style.display = 'block';
+    showToast(`✅ Imported ${d.inserted} record(s)`);
+    loadDashboard();
+    if (type === 'purchases' || type === 'sales') loadStockPage(); else loadExpenses();
+  } catch (e) { showUploadError(e.message); }
+  finally { btn.disabled = false; btn.textContent = '🚀 Upload & Import'; }
+}
+function showUploadError(msg) {
+  const el = document.getElementById('upload-error');
+  el.textContent = '❌ ' + msg; el.style.display = 'block';
+}
+
+// ============================================================
+// USERS (admin only)
+// ============================================================
+async function loadUsers() {
+  const tb = document.getElementById('users-tbody');
+  tb.innerHTML = '<tr><td colspan="6" class="empty-state"><span class="spinner"></span></td></tr>';
+  try {
+    const d = await api('/users');
+    tb.innerHTML = d.users.map(u => `
+      <tr><td class="td-bold">${esc(u.name)}</td><td>${esc(u.email)}</td><td>${esc(u.role)}</td>
+      <td>${u.active ? '<span class="badge badge-green">Active</span>' : '<span class="badge badge-red">Deactivated</span>'}</td>
+      <td>${esc(u.created_at)}</td>
+      <td>${u.active && u.id !== CURRENT_USER.id ? `<button class="icon-btn" onclick="deactivateUser(${u.id})">🚫</button>` : ''}</td></tr>`).join('');
+  } catch (e) { showToast(e.message, true); }
+}
+async function saveUser() {
+  const errEl = document.getElementById('u-error'); errEl.style.display = 'none';
+  const body = {
+    name: document.getElementById('u-name').value.trim(),
+    email: document.getElementById('u-email').value.trim(),
+    role: document.getElementById('u-role').value,
+    password: document.getElementById('u-pass').value
+  };
+  const btn = document.getElementById('u-save-btn'); btn.disabled = true;
+  try {
+    await api('/users', { method: 'POST', body: JSON.stringify(body) });
+    closeModal('modal-user');
+    ['u-name', 'u-email', 'u-pass'].forEach(id => document.getElementById(id).value = '');
+    showToast('✅ User created');
+    loadUsers();
+  } catch (e) { errEl.textContent = e.message; errEl.style.display = 'block'; }
+  finally { btn.disabled = false; }
+}
+async function deactivateUser(id) {
+  if (!confirm('Deactivate this user? They will be logged out and unable to sign in.')) return;
+  try { await api('/users/' + id + '/deactivate', { method: 'POST' }); showToast('User deactivated'); loadUsers(); }
+  catch (e) { showToast(e.message, true); }
+}
+</script>
+</body>
+</html>
