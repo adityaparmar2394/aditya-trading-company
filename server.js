@@ -12,7 +12,7 @@ const { writeXlsx, readXlsx, toCsv, parseCsv } = require('./xlsx');
 
 const PORT = process.env.PORT || 3000;
 const IS_PROD = process.env.NODE_ENV === 'production';
-const PUBLIC_DIR = path.join(__dirname, '..', 'public');
+const PUBLIC_DIR = __dirname;
 const MAX_BODY = 8 * 1024 * 1024; // 8MB (covers xlsx uploads)
 
 // ---------------- helpers ----------------
